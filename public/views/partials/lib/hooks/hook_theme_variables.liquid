@@ -3,52 +3,222 @@
   Provides the color scheme and other design tokens that define a theme.
 {% endcomment %}
 
+{% capture theme_headscripts %}
+    <link rel="stylesheet" href="{{ 'modules/<%= &machine_name =%>/theme.css' | asset_url }}">
+{% endcapture %}
+
 {% parse_json theme_variables %}
 {
-  "theme": "my-theme",
-  "colors": {
-    "panel": "255, 255, 255",
-    "base": "243, 244, 246",
-    "highlighted": "232, 235, 243",
-    "divider": "214, 217, 237",
-    "prominent": "0, 0, 0",
-    "normal": "55, 65, 81",
-    "supplementary": "103, 112, 123",
-    "graphic": "64, 85, 104",
-    "inverted": "255, 255, 255",
-    "interactive-graphic": "77, 71, 195",
-    "interactive-text": "138, 40, 142",
-    "interactive-hover": "101, 45, 144",
-    "interactive-disabled": "77, 71, 195",
-    "colorful": "231, 236, 243",
-    "colorful-hover": "64, 59, 166",
-    "colorful-foreground": "255, 255, 255",
-    "colorful-supplementary": "255, 255, 255",
-    "gradient1-from": "77, 71, 195",
-    "gradient1-to": "138, 40, 142",
-    "gradient2-from": "101, 45, 144",
-    "gradient2-to": "138, 40, 142",
-    "input": "255, 255, 255",
-    "input-border": "107, 114, 128",
-    "input-foreground": "55, 65, 81",
-    "button-primary": "29, 78, 216",
-    "button-primary-hover": "101, 45, 144",
-    "button-primary-foreground": "255, 255, 255",
-    "button-primary-foreground-hover": "255, 255, 255",
-    "button-secondary": "138, 40, 142",
-    "button-secondary-hover": "55, 65, 81",
-    "button-secondary-foreground": "103, 112, 123",
-    "button-secondary-foreground-hover": "77, 71, 195",
-    "important": "196, 8, 65",
-    "important-hover": "174, 5, 57",
-    "important-disabled": "246, 223, 230",
-    "confirmation": "0, 105, 105",
-    "confirmation-hover": "1, 74, 74",
-    "confirmation-disabled": "216, 232, 232",
-    "warning": "255, 214, 0",
-    "warning-hover": "237, 207, 48",
-    "warning-disabled": "248, 241, 209"
-  }
+  "theme": "<%= &machine_name =%>",
+  "colors": [
+    {
+      "name": "panel",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "base",
+      "value": "243, 244, 246",
+      "isEditable": true
+    },
+    {
+      "name": "highlighted",
+      "value": "232, 235, 243",
+      "isEditable": true
+    },
+    {
+      "name": "divider",
+      "value": "214, 217, 237",
+      "isEditable": true
+    },
+    {
+      "name": "prominent",
+      "value": "0, 0, 0",
+      "isEditable": true
+    },
+    {
+      "name": "normal",
+      "value": "55, 65, 81",
+      "isEditable": true
+    },
+    {
+      "name": "supplementary",
+      "value": "103, 112, 123",
+      "isEditable": true
+    },
+    {
+      "name": "graphic",
+      "value": "64, 85, 104",
+      "isEditable": true
+    },
+    {
+      "name": "inverted",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "interactive-graphic",
+      "value": "77, 71, 195",
+      "isEditable": true
+    },
+    {
+      "name": "interactive-text",
+      "value": "138, 40, 142",
+      "isEditable": true
+    },
+    {
+      "name": "interactive-hover",
+      "value": "101, 45, 144",
+      "isEditable": true
+    },
+    {
+      "name": "interactive-disabled",
+      "value": "77, 71, 195",
+      "isEditable": true
+    },
+    {
+      "name": "colorful",
+      "value": "231, 236, 243",
+      "isEditable": true
+    },
+    {
+      "name": "colorful-hover",
+      "value": "64, 59, 166",
+      "isEditable": true
+    },
+    {
+      "name": "colorful-foreground",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "colorful-supplementary",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "gradient1-from",
+      "value": "77, 71, 195",
+      "isEditable": true
+    },
+    {
+      "name": "gradient1-to",
+      "value": "138, 40, 142",
+      "isEditable": true
+    },
+    {
+      "name": "gradient2-from",
+      "value": "101, 45, 144",
+      "isEditable": true
+    },
+    {
+      "name": "gradient2-to",
+      "value": "138, 40, 142",
+      "isEditable": true
+    },
+    {
+      "name": "input",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "input-border",
+      "value": "107, 114, 128",
+      "isEditable": true
+    },
+    {
+      "name": "input-foreground",
+      "value": "55, 65, 81",
+      "isEditable": true
+    },
+    {
+      "name": "button-primary",
+      "value": "29, 78, 216",
+      "isEditable": true
+    },
+    {
+      "name": "button-primary-hover",
+      "value": "101, 45, 144",
+      "isEditable": true
+    },
+    {
+      "name": "button-primary-foreground",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "button-primary-foreground-hover",
+      "value": "255, 255, 255",
+      "isEditable": true
+    },
+    {
+      "name": "button-secondary",
+      "value": "138, 40, 142",
+      "isEditable": true
+    },
+    {
+      "name": "button-secondary-hover",
+      "value": "55, 65, 81",
+      "isEditable": true
+    },
+    {
+      "name": "button-secondary-foreground",
+      "value": "103, 112, 123",
+      "isEditable": true
+    },
+    {
+      "name": "button-secondary-foreground-hover",
+      "value": "77, 71, 195",
+      "isEditable": true
+    },
+    {
+      "name": "important",
+      "value": "196, 8, 65",
+      "isEditable": true
+    },
+    {
+      "name": "important-hover",
+      "value": "174, 5, 57",
+      "isEditable": true
+    },
+    {
+      "name": "important-disabled",
+      "value": "246, 223, 230",
+      "isEditable": true
+    },
+    {
+      "name": "confirmation",
+      "value": "0, 105, 105",
+      "isEditable": true
+    },
+    {
+      "name": "confirmation-hover",
+      "value": "1, 74, 74",
+      "isEditable": true
+    },
+    {
+      "name": "confirmation-disabled",
+      "value": "216, 232, 232",
+      "isEditable": true
+    },
+    {
+      "name": "warning",
+      "value": "255, 214, 0",
+      "isEditable": true
+    },
+    {
+      "name": "warning-hover",
+      "value": "237, 207, 48",
+      "isEditable": true
+    },
+    {
+      "name": "warning-disabled",
+      "value": "248, 241, 209",
+      "isEditable": true
+    }
+  ],
+  "headscripts": "{{ theme_headscripts | escape_javascript }}",
+  "preview": "modules/<%= &machine_name =%>/preview"
 }
 {% endparse_json %}
 
